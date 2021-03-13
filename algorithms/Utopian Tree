@@ -1,0 +1,35 @@
+/* This problem can be solved using recursion. If n=0, default height i.e. 1 would be returned.
+When n is odd which means it's summer cycle, 1 is added to the height obtained in the just previous
+cycle. When n is even which means it's the spring cycle, the height obtained in the just previous cycle is doubled.*/
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int t; 
+    scanf("%d", &t);
+    for(int a0 = 0; a0 < t; a0++){
+        int n; 
+        scanf("%d", &n);
+        printf("%d\n", utopian(n));
+    }
+    return 0;
+}
+int utopian(int n)
+{
+    if(n == 0)
+        {
+        return 1;
+    }
+    else
+        if(n % 2 != 0)
+        {
+        return (2 * utopian(n - 1));
+    }
+    else
+        return (1 + utopian(n - 1));
+}

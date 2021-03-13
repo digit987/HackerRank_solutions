@@ -1,0 +1,37 @@
+#!/bin/python
+# https://www.hackerrank.com/challenges/crush/
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the arrayManipulation function below.
+def arrayManipulation(n, queries):
+    arr = [0 for _ in range(n)]
+    for q in queries:
+        for i in range(q[0]-1, q[1]):
+            if arr[i] == 0:
+                arr[i] = q[2]
+            else:
+                arr[i] += q[2]
+    return max(arr)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nm = raw_input().split()
+
+    n = int(nm[0])
+
+    m = int(nm[1])
+
+    queries = []
+
+    for _ in xrange(m):
+        queries.append(map(int, raw_input().rstrip().split()))
+
+    result = arrayManipulation(n, queries)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()

@@ -1,0 +1,28 @@
+'''
+https://www.hackerrank.com/challenges/array-pairs/
+                            Online Python Compiler.
+                Code, Compile, Run and Debug python program online.
+Write your code in this editor and press "Run" button to execute it.
+
+'''
+import os
+
+def get_max(a, b):
+    return max(a, b)
+def solve(arr):
+    count = 0
+    for i in range(0, len(arr)-1):
+        current_max = arr[i]
+        for j in range(i+1, len(arr)):
+            current_max = get_max(current_max, arr[j])
+            if arr[i] * arr[j] <= current_max:
+                count += 1
+    return count
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    arr_count = int(raw_input())
+    arr = map(int, raw_input().rstrip().split())
+    result = solve(arr)
+    fptr.write(str(result) + '\n')
+    fptr.close()

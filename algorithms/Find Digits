@@ -1,0 +1,34 @@
+/* We have a number suppose 1024. We can obtain each of its digits by getting the remainder on dividing the number 
+by 10. Dividing a number by 10 is a special case where if the quotient and the remainder are concatenated, we get the
+actual number when the number, quotient, remainder and the divisor are integers. For example, 1024/10 gives quotient
+102 and remainder 4. We store 4 in a variable and the quotient 102 is considered a new number and the process repeats.
+102 is a new number and dividing it by 10 gives quotient 100 and the remainder 2. This process repeats till the divisor
+becomes the number at the leftmost digit i.e., 1 here. Now, 1/10 gives divisor 0 and remainder 1. So the stopping
+criterion is the condition num>0.
+Here in this question, we have to check each number's divisibility with each obtained remainder and increment the count.
+Other important thing to be noted is that we have to create a replica of the actual number because we are shortening
+the number each time but we have to check the divisibility of the actual number with each remainder. */
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            int cpy = n, count = 0;
+        while(cpy > 0)
+            {
+            if(cpy % 10 != 0 && n % (cpy % 10) == 0)
+               count++;
+               cpy = cpy / 10;
+        }
+        System.out.println(count);
+        }
+    }
+}
